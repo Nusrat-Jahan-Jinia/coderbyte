@@ -4,21 +4,25 @@ Given an array of integers 'a', your task is to count the number of pairs
 such that a[i] and a[j] are digit anagrams.
 */
 
-function countDigitAnagramPairs(arr) {
+
+
+function countAnagramPairs(arr) {
   const sortedStrings = arr.map((num) => String(num).split("").sort().join(""));
-  const countMap = new Map();
+
   let totalCount = 0;
+  const countMap = new Map();
   for (const sortedStr of sortedStrings) {
     if (countMap.has(sortedStr)) {
       totalCount += countMap.get(sortedStr);
-      countMap.set(sortedStr, countMap.get(sortedStr) + 1);
-    } else {
+      countMap.set(sortedStr, countMap.get(sortedStr) + 1)
+      console.log(countMap);
+    }else{
       countMap.set(sortedStr, 1);
     }
   }
   return totalCount;
 }
 // Example usage
-const inputArray = [123, 231, 312, 456, 654];
-const result = countDigitAnagramPairs(inputArray);
-console.log(result); // Output: 3 (Pairs: [123, 231], [123, 312], [231, 312])
+const inputArray = ["listen", "silent", "dog", "god", "act", "cab", "odg", 'gdo'];
+const result = countAnagramPairs(inputArray);
+console.log(result); 
